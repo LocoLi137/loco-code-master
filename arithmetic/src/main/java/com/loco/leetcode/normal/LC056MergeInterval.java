@@ -1,13 +1,13 @@
-package com.loco.greedy;
+package com.loco.leetcode.normal;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
 
-public class Leetcode56MergeInterval {
+public class LC056MergeInterval {
     public static void main(String[] args) {
-        Leetcode56MergeInterval interval = new Leetcode56MergeInterval();
+        LC056MergeInterval interval = new LC056MergeInterval();
         int[][] nums = {{1,3}, {2,6}, {8,10}, {15,18}};
         int[][] merge = interval.merge(nums);
         for (int[] ints : merge) {

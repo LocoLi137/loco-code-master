@@ -1,8 +1,8 @@
-package com.loco.reverse;
+package com.loco.leetcode.normal;
 
-public class Leetcode20PalindromeStr {
+public class LC20PalindromeStr {
     public static void main(String[] args) {
-        Leetcode20PalindromeStr str = new Leetcode20PalindromeStr();
+        LC20PalindromeStr str = new LC20PalindromeStr();
         int heeh = str.countSubstrings("heeh");
 
     }

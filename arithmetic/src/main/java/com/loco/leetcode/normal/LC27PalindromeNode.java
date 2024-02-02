@@ -1,17 +1,17 @@
-package com.loco.reverse;
+package com.loco.leetcode.normal;
 
 import com.loco.entity.ListNode;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Leetcode27PalindromeNode {
+public class LC27PalindromeNode {
     public static void main(String[] args) {
         ListNode listNode = new ListNode(1,
                 new ListNode(2,
                         new ListNode(2,
                                 new ListNode(1))));
-        Leetcode27PalindromeNode node = new Leetcode27PalindromeNode();
+        LC27PalindromeNode node = new LC27PalindromeNode();
         System.out.println(node.isPalindrome(listNode));
     }
 

@@ -1,9 +1,9 @@
-package com.loco.leetcode;
+package com.loco.leetcode.normal;
 
 /**
  * 合并两个有序数组
  */
-public class MS001MergeTwoArray {
+public class LC1MergeTwoArray {
     public static void main(String[] args) {
 
     }

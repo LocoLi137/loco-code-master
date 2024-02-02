@@ -1,8 +1,8 @@
-package com.loco.reverse;
+package com.loco.leetcode.normal;
 
-public class Leetcode9PalindromeNumber {
+public class LC9PalindromeNumber {
     public static void main(String[] args) {
-        Leetcode9PalindromeNumber number = new Leetcode9PalindromeNumber();
+        LC9PalindromeNumber number = new LC9PalindromeNumber();
         number.isPalindrome(121);
     }
     public boolean isPalindrome(int x) {
