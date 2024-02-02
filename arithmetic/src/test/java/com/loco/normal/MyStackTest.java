@@ -1,30 +1,40 @@
 package com.loco.normal;
 
-import junit.framework.TestCase;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
+import static org.junit.jupiter.api.Assertions.*;
 
-
-public class MyStackTest extends TestCase {
-
-
-    public void setUp() throws Exception {
-        super.setUp();
+class MyStackTest {
+    private MyStack<Integer> myStack = null;
+    @BeforeEach
+    void setUp() {
+        myStack = new MyStack<>();
+        myStack.push(1);
+        myStack.push(2);
+        myStack.push(3);
+        myStack.push(4);
     }
 
-    public void tearDown() throws Exception {
+    @AfterEach
+    void tearDown() {
     }
 
-    public void testPush() {
-
+    @Test
+    void push() {
     }
 
-    public void testPop() {
-
+    @Test
+    void pop() {
+        System.out.println(myStack.pop());
     }
 
-    public void testPeek() {
+    @Test
+    void peek() {
     }
 
-    public void testIsEmpty() {
+    @Test
+    void isEmpty() {
     }
 }
