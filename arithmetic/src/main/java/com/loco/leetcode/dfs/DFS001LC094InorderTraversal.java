@@ -20,7 +20,7 @@ public class DFS001LC094InorderTraversal {
                         new TreeNode(7)));
 
         List<Integer> integers = main.inorderTraversal1(treeNode);
-
+        System.out.println(integers);
     }
 
     //迭代
@@ -42,9 +42,9 @@ public class DFS001LC094InorderTraversal {
             return ;
         }
 
-        dfs(res, root.left);
-        res.add(root.val);
-        dfs(res, root.right);
+        dfs(res, root.left());
+        res.add(root.val());
+        dfs(res, root.right());
     }
 
 
