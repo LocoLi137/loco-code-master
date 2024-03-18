@@ -26,21 +26,58 @@ public class LC86SplitLinkedList {
     public static void main(String[] args) {
         LC86SplitLinkedList lc86SplitLinkedList = new LC86SplitLinkedList();
         ListNode listNode = new ListNode(1, new ListNode(4, new ListNode(3, new ListNode(2, new ListNode(5, new ListNode(2))))));
-        lc86SplitLinkedList.partition(listNode, 3);
+        ListNode partition = lc86SplitLinkedList.lc(listNode, 3);
+        System.out.println(partition);
     }
-    public ListNode partition(ListNode head, int x) {
-        ListNode small = new ListNode();
+
+    public ListNode lc(ListNode head, int x) {
         ListNode large = new ListNode();
-        while (head.next != null) {
-            if (head.val >= x) {
-                large.next = new ListNode(head.val);
+        ListNode largeHead = large;
+        ListNode small = new ListNode();
+        ListNode smallHead = small;
+
+        while (head != null) {
+            if(head.val < x) {
+                small.next = head;
+                small = small.next;
             } else {
-                small.next = new ListNode(head.val);
+                large.next = head;
+                large = large.next;
             }
             head = head.next;
         }
-        System.out.println(small);
-        System.out.println(large);
-        return null;
+
+        large.next = null;
+        small.next = largeHead.next;
+
+        return smallHead.next;
+    }
+
+
+    /**
+     * 维护两个链表，将大于小于的分开放进链表，循环结束拼接链表
+     * 时间复杂度：O(n) n是原链表长度
+     */
+    public ListNode partition(ListNode head, int x) {
+        ListNode small = new ListNode();
+        ListNode smallHead = small;
+
+        ListNode large = new ListNode();
+        ListNode largeHead = large;
+
+        while (head != null) {
+            if (head.val < x) {
+                small.next = head;
+                small = small.next;
+            } else {
+                large.next = head;
+                large = large.next;
+            }
+            head = head.next;
+        }
+        large.next = null;
+        small.next = largeHead.next;
+
+        return smallHead.next;
     }
 }
