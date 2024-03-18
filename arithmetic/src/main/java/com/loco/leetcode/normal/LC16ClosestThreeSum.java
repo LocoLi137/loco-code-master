@@ -1,7 +1,6 @@
 package com.loco.leetcode.normal;
 
 import java.util.Arrays;
-import java.util.HashMap;
 
 /**
  * @description:
@@ -9,9 +8,9 @@ import java.util.HashMap;
  * @email: 563235247@qq.com
  * @date: 2024/3/18 9:34
  */
-public class LC14ClosestThreeSum {
+public class LC16ClosestThreeSum {
     public static void main(String[] args) {
-        LC14ClosestThreeSum main = new LC14ClosestThreeSum();
+        LC16ClosestThreeSum main = new LC16ClosestThreeSum();
         int i = main.threeSumClosest01(new int[]{-1, 2, 1, -4}, 1);
         System.out.println(i);
 
