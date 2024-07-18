@@ -34,8 +34,6 @@ public class KafkaConsumerTest {
                 for (ConsumerRecord<String, String> data : consumer.poll(Duration.ZERO)) {
                     System.out.println(data);
                 }
-
-
             }
         } catch (Exception e) {
             e.printStackTrace();
