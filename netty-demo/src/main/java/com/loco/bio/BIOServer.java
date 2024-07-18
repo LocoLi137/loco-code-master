@@ -47,7 +47,7 @@ public class BIOServer {
                 if (read == -1) {
                     break;
                 }
-                System.out.println(new String(bytes, 0, read)); // 输出客户端发送的数据
+                System.out.println(Thread.currentThread().getName() + ": " + new String(bytes, 0, read)); // 输出客户端发送的数据
             }
 
 
