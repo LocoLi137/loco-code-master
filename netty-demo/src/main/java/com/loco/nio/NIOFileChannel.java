@@ -21,7 +21,8 @@ public class NIOFileChannel {
         try {
 //            writeFile();
 //            readFile();
-            readAndWrite();
+//            readAndWrite();
+            copyFile();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -78,4 +79,25 @@ public class NIOFileChannel {
         fileInputStream.close();
         fileOutputStream.close();
     }
+
+    /**
+     * 利用 FileChannel 的 transferFrom 方法文件拷贝
+     * @throws Exception
+     */
+    static void copyFile() throws Exception{
+        //创建相关流
+        FileInputStream fileInputStream = new FileInputStream(classpath+"pic01.jpg");
+        FileOutputStream fileOutputStream = new FileOutputStream(classpath+"pic02.jpg");
+        //获取各个流对应的 filechannel
+        FileChannel sourceCh = fileInputStream.getChannel();
+        FileChannel destCh = fileOutputStream.getChannel();
+        //使用 transferForm 完成拷贝
+        destCh.transferFrom(sourceCh,0,sourceCh.size());
+        //关闭相关通道和流
+        sourceCh.close();
+        destCh.close();
+        fileInputStream.close();
+        fileOutputStream.close();
+    }
+
 }
