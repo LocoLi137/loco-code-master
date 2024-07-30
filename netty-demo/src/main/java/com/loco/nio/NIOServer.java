@@ -15,8 +15,7 @@ public class NIOServer {
     }
     //一个整型的Buffer静态变量
     static IntBuffer intBuffer = null;
-    public static void allocateTest()
-    {
+    public static void allocateTest() {
         //创建了一个Intbuffer实例对象
         intBuffer = IntBuffer.allocate(20);
         System.out.println("------------after allocate------------------");
