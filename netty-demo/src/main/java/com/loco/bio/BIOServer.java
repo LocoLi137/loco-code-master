@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.Objects;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -15,10 +16,11 @@ public class BIOServer {
     public static void main(String[] args) throws IOException {
         //1.创建线程池
         //2.如果有客户端链接，则创建创建线程与之通信
-        try (
-                ExecutorService pool = Executors.newCachedThreadPool();
-                ServerSocket serverSocket = new ServerSocket(6666);
-        ) {
+        ExecutorService pool = null;
+        ServerSocket serverSocket = null;
+        try {
+            pool = Executors.newCachedThreadPool();
+            serverSocket = new ServerSocket(6666);
             System.out.println("server started");
             while (true) {
                 //监听，阻塞等待客户端链接
@@ -30,6 +32,9 @@ public class BIOServer {
                     handler(accept);
                 });
             }
+        } finally {
+            Objects.requireNonNull(pool).shutdownNow();
+            Objects.requireNonNull(serverSocket).close();
         }
 
     }

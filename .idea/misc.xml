@@ -7,6 +7,8 @@
         <option value="$PROJECT_DIR$/arithmetic/pom.xml" />
         <option value="$PROJECT_DIR$/common/pom.xml" />
         <option value="$PROJECT_DIR$/design-pattern/pom.xml" />
+        <option value="$PROJECT_DIR$/kafka-demo/pom.xml" />
+        <option value="$PROJECT_DIR$/netty-demo/pom.xml" />
       </list>
     </option>
     <option name="workspaceImportForciblyTurnedOn" value="true" />
