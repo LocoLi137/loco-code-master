@@ -31,7 +31,7 @@ public class BufferDemo {
         ByteBuffer[] byteBuffers = new ByteBuffer[2];
         byteBuffers[0] = ByteBuffer.allocate(5);
         byteBuffers[1] = ByteBuffer.allocate(3);
-        //等客户端连接(telnet)
+        //等客户端连接(telnet 127.0.0.1 7000)
         SocketChannel socketChannel = serverSocketChannel.accept();
         int messageLength = 8; //假定从客户端接收 8 个字节
         //循环的读取
@@ -42,8 +42,9 @@ public class BufferDemo {
                 byteRead += (int) l; //累计读取的字节数
                 System.out.println("byteRead=" + byteRead);
                 //使用流打印, 看看当前的这个 buffer 的 position 和 limit
-                Arrays.stream(byteBuffers).map(buffer -> "position=" + buffer.position() + ", limit=" +
-                        buffer.limit()).forEach(System.out::println);
+                Arrays.stream(byteBuffers)
+                        .map(buffer -> "position=" + buffer.position() + ", limit=" +buffer.limit())
+                        .forEach(System.out::println);
             }
             //将所有的 buffer 进行 flip
             Arrays.asList(byteBuffers).forEach(ByteBuffer::flip);
@@ -55,8 +56,7 @@ public class BufferDemo {
             }
             //将所有的 buffer 进行 clear
             Arrays.asList(byteBuffers).forEach(ByteBuffer::clear);
-            System.out.println("byteRead:=" + byteRead + " byteWrite=" + byteWirte + ", messagelength" +
-                    messageLength);
+            System.out.println("byteRead:=" + byteRead + ", byteWrite=" + byteWirte + ", message length" + messageLength);
         }
 
     }
