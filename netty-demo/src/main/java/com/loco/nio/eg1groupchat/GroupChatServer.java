@@ -1,11 +1,14 @@
 package com.loco.nio.eg1groupchat;
 
+import javax.swing.*;
 import java.io.IOException;
 import java.net.InetSocketAddress;
 import java.nio.channels.SelectionKey;
 import java.nio.channels.Selector;
 import java.nio.channels.ServerSocketChannel;
 import java.nio.channels.SocketChannel;
+import java.util.Iterator;
+import java.util.Set;
 
 /**
  * description:
@@ -41,7 +44,37 @@ public class GroupChatServer {
 
     //监听
     public void listen(){
+        try {
+            while (true) {
+                int count = selector.select(2000); //监听两秒，返回接收到的事件
+                if (count > 0) {
+                    Iterator<SelectionKey> iterator = selector.selectedKeys().iterator();
+                    while (iterator.hasNext()) {
+                        SelectionKey key = iterator.next();
+                        if (key.isAcceptable()) {
+                            //监听到 accept , 将该 channel 注册到selector
+                            SocketChannel sc = listenChannel.accept();
+                            sc.register(selector, SelectionKey.OP_ACCEPT);
+                            System.out.println(sc.getRemoteAddress() + " online ~");
+                        }
+                        if (key.isReadable()) {
+                            //监听到 read 事件, TODO 处理读
+                        }
 
+                        //手动移除当前 key ，防止重复处理
+                        iterator.remove();
+
+                    }
+
+                } else {
+                    System.out.println("无事发生， 等待~");
+                }
+            }
+
+
+        } catch (Exception e) {
+
+        }
     }
 
     //读取客户端消息
