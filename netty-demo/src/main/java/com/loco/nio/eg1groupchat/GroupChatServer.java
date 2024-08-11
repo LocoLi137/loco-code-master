@@ -17,7 +17,6 @@ public class GroupChatServer {
     private Selector selector;
     private ServerSocketChannel listenChannel;
     private final int PORT = 8888;
-
     public static void main(String[] args) {
         //创建服务器对象
         GroupChatServer groupChatServer = new GroupChatServer();
@@ -45,7 +44,7 @@ public class GroupChatServer {
     public void listen(){
         try {
             while (true) {
-                int count = selector.select(2000); //监听两秒，返回接收到的事件
+                int count = selector.select(); //监听两秒，返回接收到的事件
                 if (count > 0) {
                     Iterator<SelectionKey> iterator = selector.selectedKeys().iterator();
                     while (iterator.hasNext()) {
@@ -53,27 +52,23 @@ public class GroupChatServer {
                         if (key.isAcceptable()) {
                             //监听到 accept , 将该 channel 注册到selector
                             SocketChannel sc = listenChannel.accept();
-                            sc.register(selector, SelectionKey.OP_ACCEPT);
+                            sc.configureBlocking(false);
+                            sc.register(selector, SelectionKey.OP_READ);
                             System.out.println(sc.getRemoteAddress() + " online ~");
                         }
                         if (key.isReadable()) {
                             //监听到 read 事件, TODO 处理读
                             readData(key);
                         }
-
                         //手动移除当前 key ，防止重复处理
                         iterator.remove();
-
                     }
-
                 } else {
                     System.out.println("无事发生， 等待~");
                 }
             }
-
-
         } catch (Exception e) {
-
+            e.printStackTrace();
         }
     }
 
@@ -86,10 +81,10 @@ public class GroupChatServer {
             //创建buffer
             ByteBuffer buffer = ByteBuffer.allocate(1024);
             int read = channel.read(buffer);
-            while (read > 0) {
-                String msg = new String(buffer.array());
-                System.out.println("from client :" + msg); //服务端 输出本次拿到的消息
-                //向其他客户端转发消息 TODO 处理转发
+            if (read > 0) {
+                String msg = new String(buffer.array(), 0, read);
+                System.out.println("from client :" + msg); //服务端 输出本次拿到的消息,只读取实际字节
+                //向其他客户端转发消息
                 send2OtherClients(msg, channel);
             }
         } catch (IOException e) {
