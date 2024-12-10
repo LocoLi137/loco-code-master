@@ -23,40 +23,27 @@ import java.util.LinkedList;
  * </p>
  */
 public class LC30_MinStack {
-    public static void main(String[] args) {
-        MinStack minStack = new MinStack();
-        minStack.push(-2);
-        minStack.push(0);
-        minStack.push(-3);
-        minStack.min();//--> 返回 -3.
-        minStack.pop();
-        minStack.top(); //--> 返回 0.
-        minStack.min(); //--> 返回 -2.
 
+    private final Deque<Integer> xStack, minStack;
+
+    public LC30_MinStack() {
+        xStack  = new LinkedList<>();
+        minStack = new LinkedList<>();
+        minStack.push(Integer.MAX_VALUE);
     }
-
-    static class MinStack {
-        private final Deque<Integer> xStack, minStack;
-
-        public MinStack() {
-            xStack  = new LinkedList<>();
-            minStack = new LinkedList<>();
-            minStack.push(Integer.MAX_VALUE);
-        }
-        public void push(int x) {
-            xStack.push(x);
-            minStack.push(Math.min(minStack.peek(), x));
-        }
-        public void pop() {
-            xStack.pop();
-            minStack.pop();
-        }
-        public int top() {
-            return xStack.peek();
-        }
-        public int min() {
-            return minStack.peek();
-        }
+    public void push(int x) {
+        xStack.push(x);
+        minStack.push(Math.min(minStack.peek(), x));
+    }
+    public void pop() {
+        xStack.pop();
+        minStack.pop();
+    }
+    public int top() {
+        return xStack.peek();
+    }
+    public int min() {
+        return minStack.peek();
     }
 }
 
