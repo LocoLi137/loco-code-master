@@ -2,7 +2,6 @@ package com.loco;
 
 import java.util.ArrayList;
 import java.util.ListIterator;
-import java.util.Objects;
 
 /**
  * Hello world!
@@ -56,7 +55,7 @@ public class App {
         strings.add("002");
         strings.add("003");
 
-        ListIterator li = strings.listIterator();
+        ListIterator<String> li = strings.listIterator();
         while(li.hasNext()){
             Object obj = li.next();
             if(obj.equals("001")){

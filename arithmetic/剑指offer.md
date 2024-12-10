@@ -1,6 +1,6 @@
 ## 第 1 天 栈与队列（简单）
 
-剑指 Offer 09. 用两个栈实现队列  
+[剑指 Offer 09. 用两个栈实现队列](https://github.com/LocoLi137/loco-code-master/blob/ae2b17f95961d2cef3671d215ce370938eb1ec80/arithmetic/src/main/java/com/loco/lcr/CLR09TwoStack2Queue.java)  
 剑指 Offer 30. 包含min函数的栈  
 ## 第 2 天 链表（简单）
 

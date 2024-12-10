@@ -1,4 +1,4 @@
-package com.loco.lcr;
+package com.loco.lcr.day01_stack_and_queue;
 
 import java.util.Stack;
 
@@ -6,14 +6,16 @@ import java.util.Stack;
  * description: 两个栈实现队列
  * author: Loco.Li
  */
-public class CLR09TwoStack2Queue<T> {
+public class LC09_TwoStack2Queue<T> {
     private Stack<T> data = new Stack<>();
     private Stack<T> cur = new Stack<>();
 
+    //出栈
     public void push(T value) {
         data.push(value);
     }
 
+    //入栈
     public T pop(int value) {
         if (cur.isEmpty()) {
             while (!data.isEmpty()) {
