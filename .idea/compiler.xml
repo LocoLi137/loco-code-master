@@ -6,11 +6,13 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="kafka-demo" />
-        <module name="arithmetic" />
         <module name="design-pattern" />
         <module name="netty-demo" />
         <module name="common" />
+        <module name="reacter-demo" />
+        <module name="kafka-demo" />
+        <module name="arithmetic" />
+        <module name="loco-tools" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel target="17">
